@@ -1,0 +1,8 @@
+@import "components/button";
+
+.button {
+  &.green {
+    background-color: #00AA00;
+    border-color: #00DD00;
+  }
+}

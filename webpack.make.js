@@ -50,7 +50,7 @@ module.exports = function makeWebpackConfig(options) {
     } else {
         config.output = {
             // Absolute output directory
-            path: __dirname + '/public',
+            path: __dirname + '/app',
 
             // Output path from the view of the page
             // Uses webpack-dev-server in development
@@ -194,7 +194,7 @@ module.exports = function makeWebpackConfig(options) {
      */
     config.postcss = [
         autoprefixer({
-            browsers: ['last 2 version']
+            browsers: ['last 2 version, > 10%']
         })
     ];
 
@@ -225,7 +225,7 @@ module.exports = function makeWebpackConfig(options) {
             new BrowserSyncPlugin({
                 host: 'localhost',
                 port: 8080,
-                server: { baseDir: ['public'] },
+                server: { baseDir: ['app'] },
                 middleware: [
                     modRewrite(['^[^\\.]*$ /index.html [L]'])
                 ]
@@ -256,7 +256,7 @@ module.exports = function makeWebpackConfig(options) {
      * Reference: http://webpack.github.io/docs/webpack-dev-server.html
      */
     config.devServer = {
-        contentBase: './public',
+        contentBase: './app',
         stats: {
             modules: false,
             cached: false,
